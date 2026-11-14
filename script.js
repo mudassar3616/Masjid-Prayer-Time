@@ -191,7 +191,6 @@ function showTable(days, todayIndex) {
     if (index === todayIndex) {
       row.className = "today";
     }
-    row.style.animationDelay = index * 0.03 + "s";
 
     // Date, day name, Hijri date
     let cells = `
@@ -285,23 +284,7 @@ function restoreSettings() {
 }
 
 // =========================
-// 9. Stars background
-// =========================
-function makeStars() {
-  const box = document.querySelector(".stars");
-
-  for (let i = 0; i < 70; i++) {
-    const star = document.createElement("span");
-    star.className = "star";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.animationDelay = Math.random() * 3 + "s";
-    box.appendChild(star);
-  }
-}
-
-// =========================
-// 10. Events and start
+// 9. Events and start
 // =========================
 loadBtn.addEventListener("click", loadTimes);
 printBtn.addEventListener("click", () => window.print());
@@ -313,6 +296,5 @@ printBtn.addEventListener("click", () => window.print());
   });
 });
 
-makeStars();
 restoreSettings();
 loadTimes();
