@@ -1,0 +1,541 @@
+/* =========================
+   1. Colors and basics
+   ========================= */
+:root {
+  --green-dark: #062a20;
+  --green: #0e4d3a;
+  --green-light: #1a7a5c;
+  --gold: #f2c14e;
+  --gold-dark: #d99a1e;
+  --cream: #fff8e7;
+  --white: #ffffff;
+  --soft: #b8d4c8;
+  --radius: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--cream);
+  background: linear-gradient(160deg, #04201a 0%, #0b3d2e 50%, #12304a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* =========================
+   2. Stars background
+   ========================= */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* =========================
+   3. Header
+   ========================= */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.moon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  box-shadow: inset 18px -6px 0 0 var(--gold);
+  filter: drop-shadow(0 0 12px rgba(242, 193, 78, 0.6));
+  animation: float 4s ease-in-out infinite;
+}
+
+.arabic {
+  font-family: "Amiri", serif;
+  font-size: 26px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--gold), #fff3c4, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+.date {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.hijri {
+  color: var(--soft);
+}
+
+.clock {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================
+   4. Settings form
+   ========================= */
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 30px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.input {
+  flex: 1 1 180px;
+  padding: 12px 16px;
+  border: 1px solid rgba(242, 193, 78, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.input::placeholder {
+  color: var(--soft);
+}
+
+.input:focus {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* =========================
+   5. Buttons
+   ========================= */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: var(--green-light);
+  color: var(--white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: #22946f;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--green-dark);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #ffd36b, var(--gold));
+}
+
+/* =========================
+   6. Next prayer box
+   ========================= */
+.next-box {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(242, 193, 78, 0.4);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(242, 193, 78, 0.18), rgba(26, 122, 92, 0.25));
+  animation: fadeUp 0.8s 0.3s ease both, glow 3s 1s ease-in-out infinite;
+}
+
+.next-label {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.next-name {
+  font-size: 36px;
+  color: var(--gold);
+  margin: 4px 0;
+}
+
+.countdown {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================
+   7. Roza boxes
+   ========================= */
+.roza {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.roza-item {
+  text-align: center;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.3s;
+}
+
+.roza-item:hover {
+  transform: translateY(-4px);
+}
+
+.roza-label {
+  font-size: 14px;
+  color: var(--soft);
+}
+
+.roza-time {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* =========================
+   8. Prayer cards
+   ========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card {
+  text-align: center;
+  padding: 22px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(6px);
+  animation: fadeUp 0.6s ease both;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card-icon {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.card:hover .card-icon {
+  animation: bounce 0.6s ease;
+}
+
+.card-name {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.card-time {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* The next prayer card */
+.card.active {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--green-dark);
+  animation: fadeUp 0.6s ease both, pulse 2s ease-in-out infinite;
+}
+
+.card.active .card-name {
+  color: var(--green-dark);
+}
+
+/* =========================
+   9. Loader and error
+   ========================= */
+.loader {
+  display: none;
+  width: 48px;
+  height: 48px;
+  margin: 20px auto;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader.show {
+  display: block;
+}
+
+.error {
+  min-height: 20px;
+  text-align: center;
+  color: #ff8a80;
+}
+
+/* =========================
+   10. Monthly table
+   ========================= */
+.month {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+.month-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.month-title {
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  padding: 12px 8px;
+  background: var(--green-light);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.table th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.table th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.table td {
+  padding: 10px 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table tbody tr {
+  animation: fadeIn 0.5s ease both;
+  transition: background 0.2s;
+}
+
+.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.table tr.today {
+  background: rgba(242, 193, 78, 0.2);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* =========================
+   11. Footer
+   ========================= */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--soft);
+}
+
+/* =========================
+   12. Animations
+   ========================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.3); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(242, 193, 78, 0); }
+  50%      { box-shadow: 0 0 30px rgba(242, 193, 78, 0.35); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* =========================
+   13. Mobile
+   ========================= */
+@media (max-width: 600px) {
+  .container { padding: 24px 14px; }
+  .next-name { font-size: 28px; }
+  .countdown { font-size: 36px; }
+  .roza-time { font-size: 20px; }
+}
+
+/* Users who turn off motion in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* =========================
+   14. Print sheet
+   ========================= */
+@media print {
+  * { animation: none !important; }
+
+  body {
+    background: var(--white);
+    color: #000;
+  }
+
+  .stars,
+  .moon,
+  .clock,
+  .settings,
+  .next-box,
+  .roza,
+  .grid,
+  .loader,
+  .error,
+  .btn {
+    display: none !important;
+  }
+
+  .container { padding: 0; }
+
+  .title {
+    background: none;
+    color: var(--green);
+  }
+
+  .arabic,
+  .date,
+  .hijri,
+  .month-title,
+  .footer {
+    color: #000;
+  }
+
+  .month {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .table {
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .table th {
+    background: var(--green) !important;
+    color: var(--white);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .table td {
+    padding: 6px 4px;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+  }
+
+  .table tr.today {
+    background: none;
+    color: #000;
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masjid Prayer Times</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Twinkling stars (made by script.js) -->
+  <div class="stars"></div>
+
+  <main class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="moon"></div>
+      <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <h1 class="title" id="masjidTitle">Prayer Times</h1>
+      <p class="date" id="gregorianDate">--</p>
+      <p class="hijri" id="hijriDate">--</p>
+      <p class="clock" id="clock">--:--:--</p>
+    </header>
+
+    <!-- Settings -->
+    <section class="settings">
+      <input class="input" id="masjidInput" type="text" placeholder="Masjid name (optional)">
+      <input class="input" id="cityInput" type="text" placeholder="City" value="Lahore">
+      <input class="input" id="countryInput" type="text" placeholder="Country" value="Pakistan">
+      <button class="btn" id="loadBtn">Show Times</button>
+    </section>
+
+    <!-- Next prayer countdown -->
+    <section class="next-box">
+      <p class="next-label">Next Prayer</p>
+      <h2 class="next-name" id="nextName">--</h2>
+      <p class="countdown" id="countdown">00:00:00</p>
+    </section>
+
+    <!-- Roza times -->
+    <section class="roza">
+      <div class="roza-item">
+        <!-- <p class="roza-label">Sehri Ends</p> -->
+        <p class="roza-time" id="sehriTime">--</p>
+      </div>
+      <div class="roza-item">
+        <!-- <p class="roza-label">Iftar</p> -->
+        <p class="roza-time" id="iftarTime">--</p>
+      </div>
+    </section>
+
+    <!-- Loader and error -->
+    <div class="loader" id="loader"></div>
+    <p class="error" id="error"></p>
+
+    <!-- Today's prayer cards (made by script.js) -->
+    <section class="grid" id="prayerGrid"></section>
+
+    <!-- Monthly timetable -->
+    <section class="month">
+      <div class="month-head">
+        <h2 class="month-title" id="monthTitle">Monthly Timetable</h2>
+        <button class="btn btn-gold" id="printBtn">Print Sheet</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Hijri</th>
+              <th>Fajr</th>
+              <th>Sunrise</th>
+              <th>Dhuhr</th>
+              <th>Asr</th>
+              <th>Maghrib</th>
+              <th>Isha</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Times from Aladhan API. Method: University of Islamic Sciences, Karachi. Asr: Hanafi.
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
